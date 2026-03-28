@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FORGE — Words That Shape Empires</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;background:#060408;color:#f5efe0;font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:#2a1a0a;border-radius:4px}
+
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes twinkle{0%,100%{opacity:.08}50%{opacity:.85}}
+@keyframes floatA{0%,100%{transform:translate(0,0)}40%{transform:translate(28px,-45px)}70%{transform:translate(-12px,18px)}}
+@keyframes floatB{0%,100%{transform:translate(0,0)}50%{transform:translate(-35px,-30px)}}
+
+.btn{transition:all .3s cubic-bezier(.34,1.56,.64,1);cursor:pointer;font-family:'Cormorant Garamond',serif;border:none}
+.btn:hover{transform:translateY(-2px) scale(1.04)}
+.btn:active{transform:scale(.97)}
+.forge-btn{font-family:'Cinzel',serif!important}
+.forge-btn:hover{transform:scale(1.04) translateY(-2px)!important;filter:brightness(1.15)}
+
+input,textarea{outline:none;font-family:'Cormorant Garamond',serif;transition:border-color .3s,box-shadow .3s}
+textarea{resize:vertical}
+
+.orb1{position:fixed;width:600px;height:600px;border-radius:50%;top:-180px;left:-180px;pointer-events:none;z-index:0;animation:floatA 20s ease-in-out infinite;transition:background 1s}
+.orb2{position:fixed;width:500px;height:500px;border-radius:50%;bottom:-160px;right:-120px;pointer-events:none;z-index:0;animation:floatB 24s ease-in-out infinite;transition:background 1s}
+
+.wrap{position:relative;z-index:1;max-width:660px;margin:0 auto;padding:44px 18px 80px}
+
+.crown{text-align:center;margin-bottom:16px;animation:bob 4.5s ease-in-out infinite}
+.badge{text-align:center;margin-bottom:10px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.5em;text-transform:uppercase;animation:pulse 3s ease-in-out infinite;transition:color .6s}
+.title{font-family:'Cinzel',serif;font-weight:900;text-align:center;line-height:1.08;margin-bottom:8px;background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;transition:all .7s;font-size:clamp(1.9rem,6vw,3.4rem)}
+.subtitle{text-align:center;font-size:1rem;font-style:italic;color:#7a6040;margin-bottom:38px;letter-spacing:.04em}
+
+.divider{display:flex;align-items:center;gap:14px;margin:28px 0}
+.divider-line{flex:1;height:1px}
+.divider-star{font-size:16px;filter:drop-shadow(0 0 8px #FFD70077);animation:pulse 3s ease-in-out infinite}
+
+.sec-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.4em;color:#5a4020;text-transform:uppercase;margin-bottom:12px}
+.sec-sub{font-size:12.5px;font-style:italic;color:#3a2810;margin-bottom:10px}
+.section{margin-bottom:26px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 14px;border-radius:50px;font-size:13px;letter-spacing:.04em;background:transparent;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+.chip:hover{transform:translateY(-2px) scale(1.04)}
+
+.inp{width:100%;background:#0c0a08;border:1px solid #2a1a08;border-radius:10px;color:#f5efe0;font-size:14px;padding:12px 15px;font-family:'Cormorant Garamond',serif;letter-spacing:.03em}
+.inp:focus{border-color:var(--ac);box-shadow:0 0 18px var(--ag)}
+
+.forge-wrap{text-align:center;margin-bottom:44px}
+.forge-btn-el{border:none;border-radius:50px;padding:17px 58px;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background-size:200% auto;animation:shimmer 3s linear infinite;transition:all .4s}
+
+.card-outer{border-radius:22px;padding:2px;background-size:300% 300%;animation:flow 4s ease infinite;transition:opacity .6s,transform .6s}
+.card-inner{border-radius:20px;background:linear-gradient(160deg,#0e0c0a,#090706 50%,#0c0a09);padding:50px 36px 44px;position:relative;overflow:hidden}
+.card-glow{position:absolute;inset:0;pointer-events:none;transition:background 1s}
+.card-line{position:absolute;top:0;left:15%;right:15%;height:1px}
+.big-quote{position:absolute;top:14px;left:22px;font-size:110px;line-height:1;font-style:italic;font-family:'Cormorant Garamond',serif;user-select:none}
+.quote-text{font-size:clamp(1.2rem,3.3vw,1.8rem);font-style:italic;line-height:1.75;color:#f5efe0;text-align:center;position:relative;z-index:1;letter-spacing:.015em;animation:rise .8s cubic-bezier(.16,1,.3,1) both}
+.quote-line{height:1px;margin:24px auto}
+.quote-meta{text-align:center;margin-bottom:22px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.65}
+.btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.action-btn{background:transparent;border-radius:7px;padding:9px 20px;font-size:11.5px;font-family:'Cinzel',serif;letter-spacing:.12em;transition:all .3s}
+.action-btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
+.share-btn{background:#0d0b09;border:1px solid #1e1208;color:#4a3418;border-radius:7px;padding:8px 16px;font-size:12px;text-decoration:none;font-family:'Cormorant Garamond',serif;letter-spacing:.06em;display:inline-block;transition:all .3s}
+.share-btn:hover{transform:translateY(-2px);color:var(--ac);border-color:var(--ac)}
+
+.loader{text-align:center;padding:28px 0}
+.spinner{width:42px;height:42px;border:2px solid #1a1208;border-radius:50%;animation:spin .85s linear infinite;margin:0 auto 16px}
+.loader-text{font-style:italic;color:#4a3818;font-size:14px}
+
+.footer{text-align:center;margin-top:52px;font-family:'Cinzel',serif;font-size:8px;color:#281808;letter-spacing:.4em;text-transform:uppercase}
+
+/* Stars */
+.star{position:fixed;border-radius:50%;background:#FFD700;pointer-events:none;z-index:0}
+</style>
+</head>
+<body>
+
+<div class="orb1" id="orb1"></div>
+<div class="orb2" id="orb2"></div>
+<div id="stars"></div>
+
+<div class="wrap">
+
+  <div class="crown">
+    <span id="crown" style="font-size:28px;transition:filter .8s">♕</span>
+  </div>
+
+  <div class="badge" id="badge">✦ &nbsp; FORGE &nbsp; ✦</div>
+
+  <h1 class="title" id="title">Words That<br/>Shape Empires</h1>
+  <p class="subtitle">Craft quotes that ignite generations</p>
+
+  <div class="divider">
+    <div class="divider-line" style="background:linear-gradient(90deg,transparent,#2a1a0a)"></div>
+    <span class="divider-star">✦</span>
+    <div class="divider-line" style="background:linear-gradient(90deg,#2a1a0a,transparent)"></div>
+  </div>
+
+  <!-- I. THEME -->
+  <div class="section">
+    <div class="sec-label">I. Theme</div>
+    <div class="chips" id="themes"></div>
+    <input type="text" class="inp" id="customInput" placeholder="e.g. young India, first-gen entrepreneurs…" style="display:none;margin-top:10px"/>
+  </div>
+
+  <!-- II. MY VISION -->
+  <div class="section">
+    <div class="sec-label">II. My Vision &amp; Thoughts</div>
+    <div class="sec-sub">Your raw idea — AI will forge it into a powerful quote</div>
+    <textarea class="inp" id="vision" rows="3" placeholder="e.g. &quot;Middle class sirf survive karte hain&quot;&#10;or &quot;Comfort is the silent killer of greatness&quot;"></textarea>
+  </div>
+
+  <!-- III. STYLE -->
+  <div class="section">
+    <div class="sec-label">III. Style</div>
+    <div class="chips" id="styles"></div>
+  </div>
+
+  <!-- IV. LANGUAGE -->
+  <div class="section">
+    <div class="sec-label">IV. Language</div>
+    <div class="chips" id="langs"></div>
+  </div>
+
+  <!-- V. DEDICATED TO -->
+  <div class="section">
+    <div class="sec-label">V. Dedicated To (optional)</div>
+    <div style="position:relative">
+      <input type="text" class="inp" id="person" placeholder="e.g. Raj Shamani, young entrepreneurs…" style="padding-left:44px"/>
+      <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.3;font-size:17px">✍</span>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line" style="background:linear-gradient(90deg,transparent,#1e1008)"></div>
+    <span class="divider-star" style="font-size:18px">✦</span>
+    <div class="divider-line" style="background:linear-gradient(90deg,#1e1008,transparent)"></div>
+  </div>
+
+  <!-- FORGE BUTTON -->
+  <div class="forge-wrap">
+    <button class="forge-btn-el forge-btn btn" id="forgeBtn" onclick="forge()">
+      ✦ &nbsp; Forge the Quote &nbsp; ✦
+    </button>
+    <p id="countText" style="margin-top:8px;font-size:10px;color:#3a2a10;font-family:'Cinzel',serif;letter-spacing:.12em;display:none"></p>
+  </div>
+
+  <!-- QUOTE CARD -->
+  <div class="card-outer" id="cardOuter" style="display:none">
+    <div class="card-inner">
+      <div class="card-glow" id="cardGlow"></div>
+      <div class="card-line" id="cardLine"></div>
+      <div id="cardContent"></div>
+    </div>
+  </div>
+
+  <div class="footer">FORGE · Words That Shape Empires · Built for Raj Shamani</div>
+</div>
+
+<script>
+const THEMES = [
+  {id:"hustle", label:"Hustle & Empire", icon:"🔥", color:"#FF6B00", glow:"#FF6B0044"},
+  {id:"peace",  label:"Inner Calm",      icon:"🌊", color:"#38BDF8", glow:"#38BDF833"},
+  {id:"courage",label:"Courage & Fire",  icon:"⚔️", color:"#FFD700", glow:"#FFD70055"},
+  {id:"youth",  label:"Youth & Vision",  icon:"🚀", color:"#C084FC", glow:"#C084FC44"},
+  {id:"wisdom", label:"Ancient Wisdom",  icon:"🌿", color:"#4ADE80", glow:"#4ADE8033"},
+  {id:"love",   label:"Love & Soul",     icon:"❤️", color:"#FB7185", glow:"#FB718544"},
+  {id:"strong", label:"Unbreakable",     icon:"💎", color:"#93C5FD", glow:"#93C5FD33"},
+  {id:"custom", label:"Your Vision",     icon:"✍️", color:"#FBBF24", glow:"#FBBF2433"},
+];
+const STYLES = ["Short & Punchy","Poetic & Deep","Bold & Direct","Philosophical","Story-like"];
+const LANGS  = ["English","Hindi","Bengali"];
+const VOICES = [
+  "a monk who lost everything and found peace",
+  "a self-made billionaire on their last day alive",
+  "a young rebel who refused to follow the crowd",
+  "someone who failed 10 times and finally won",
+  "the universe whispering to a lost soul",
+  "a warrior standing alone before the final battle",
+  "a street kid who became a legend",
+  "iron being forged into a sword",
+  "the first ray of sunlight after the darkest night",
+  "a river that refused to stop for any mountain",
+];
+
+let selTheme = THEMES[0];
+let selStyle = "Bold & Direct";
+let selLang  = "English";
+let count    = 0;
+
+// CSS variable
+function setAC(){
+  document.documentElement.style.setProperty('--ac', selTheme.color);
+  document.documentElement.style.setProperty('--ag', selTheme.glow);
+}
+
+// Stars
+function makeStars(){
+  const el = document.getElementById('stars');
+  for(let i=0;i<35;i++){
+    const s = document.createElement('div');
+    s.className='star';
+    const sz = .7+Math.random()*1.8;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;animation:twinkle ${2+Math.random()*4}s ease-in-out ${Math.random()*5}s infinite`;
+    el.appendChild(s);
+  }
+}
+
+// Build chips
+function buildChips(){
+  // Themes
+  const tc = document.getElementById('themes');
+  THEMES.forEach(t=>{
+    const b = document.createElement('button');
+    b.className='chip btn';
+    b.innerHTML=`${t.icon} ${t.label}`;
+    b.onclick=()=>selectTheme(t);
+    b.id='t_'+t.id;
+    tc.appendChild(b);
+  });
+
+  // Styles
+  const sc = document.getElementById('styles');
+  STYLES.forEach(s=>{
+    const b = document.createElement('button');
+    b.className='chip btn';
+    b.innerHTML=s;
+    b.onclick=()=>selectStyle(s,b);
+    b.id='s_'+s.replace(/\s/g,'');
+    sc.appendChild(b);
+  });
+
+  // Langs
+  const lc = document.getElementById('langs');
+  LANGS.forEach(l=>{
+    const b = document.createElement('button');
+    b.className='chip btn';
+    b.innerHTML=l;
+    b.style.fontFamily="'Cinzel',serif";
+    b.style.letterSpacing=".1em";
+    b.onclick=()=>selectLang(l,b);
+    b.id='l_'+l;
+    lc.appendChild(b);
+  });
+
+  updateThemeUI();
+  updateStyleUI();
+  updateLangUI();
+}
+
+function selectTheme(t){
+  selTheme=t;
+  setAC();
+  updateThemeUI();
+  updateOrbs();
+  document.getElementById('customInput').style.display = t.id==='custom'?'block':'none';
+}
+function selectStyle(s){selStyle=s;updateStyleUI();}
+function selectLang(l){selLang=l;updateLangUI();}
+
+function updateThemeUI(){
+  THEMES.forEach(t=>{
+    const b=document.getElementById('t_'+t.id);
+    const on=selTheme.id===t.id;
+    b.style.border=`1px solid ${on?t.color:'#221608'}`;
+    b.style.background=on?`${t.color}20`:'transparent';
+    b.style.color=on?t.color:'#4a3818';
+    b.style.boxShadow=on?`0 0 18px ${t.glow}`:'none';
+  });
+  // Update header colors
+  const g=`linear-gradient(135deg,#f5efe0 0%,#FFD700 32%,${selTheme.color} 58%,#f5efe0 100%)`;
+  const t=document.getElementById('title');
+  t.style.background=g; t.style.backgroundSize='300% auto';
+  t.style.webkitBackgroundClip='text'; t.style.webkitTextFillColor='transparent';
+  document.getElementById('badge').style.color=selTheme.color;
+  document.getElementById('crown').style.filter=`drop-shadow(0 0 14px #FFD700bb) drop-shadow(0 0 28px ${selTheme.color}66)`;
+}
+
+function updateStyleUI(){
+  STYLES.forEach(s=>{
+    const b=document.getElementById('s_'+s.replace(/\s/g,''));
+    const on=selStyle===s;
+    b.style.border=`1px solid ${on?selTheme.color:'#221608'}`;
+    b.style.background=on?`${selTheme.color}18`:'transparent';
+    b.style.color=on?selTheme.color:'#4a3818';
+    b.style.boxShadow=on?`0 0 12px ${selTheme.glow}`:'none';
+  });
+}
+
+function updateLangUI(){
+  LANGS.forEach(l=>{
+    const b=document.getElementById('l_'+l);
+    const on=selLang===l;
+    b.style.border=`1px solid ${on?selTheme.color:'#221608'}`;
+    b.style.background=on?`${selTheme.color}1a`:'transparent';
+    b.style.color=on?selTheme.color:'#4a3818';
+    b.style.fontWeight=on?'600':'400';
+    b.style.boxShadow=on?`0 0 16px ${selTheme.glow}`:'none';
+  });
+}
+
+function updateOrbs(){
+  document.getElementById('orb1').style.background=`radial-gradient(circle,${selTheme.color}14 0%,transparent 68%)`;
+  document.getElementById('orb2').style.background=`radial-gradient(circle,${selTheme.color}0e 0%,transparent 68%)`;
+}
+
+// Input focus styles
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.inp').forEach(el=>{
+    el.addEventListener('focus',()=>{el.style.borderColor=selTheme.color;el.style.boxShadow=`0 0 16px ${selTheme.glow}`;});
+    el.addEventListener('blur', ()=>{el.style.borderColor='#2a1a08';el.style.boxShadow='none';});
+  });
+});
+
+async function forge(){
+  const btn = document.getElementById('forgeBtn');
+  const card = document.getElementById('cardOuter');
+
+  btn.disabled=true;
+  btn.style.background='#100e0c';
+  btn.style.color='#3a2a18';
+  btn.style.animation='none';
+  btn.style.boxShadow='none';
+  btn.innerHTML=`<span style="display:flex;align-items:center;gap:10px;justify-content:center"><span style="width:15px;height:15px;border:2px solid #2a1a08;border-top:2px solid ${selTheme.color};border-radius:50%;animation:spin .7s linear infinite;display:inline-block"></span>Forging…</span>`;
+
+  // Show loader
+  card.style.display='block';
+  card.style.opacity='1';
+  document.getElementById('cardContent').innerHTML=`<div class="loader"><div class="spinner" style="border-top-color:${selTheme.color}"></div><p class="loader-text">The muse is awakening…</p></div>`;
+  document.getElementById('cardGlow').style.background=`radial-gradient(ellipse 60% 40% at 50% 0%,${selTheme.color}14 0%,transparent 70%)`;
+  document.getElementById('cardLine').style.background=`linear-gradient(90deg,transparent,${selTheme.color},#FFD700,${selTheme.color},transparent)`;
+  card.style.background=`linear-gradient(135deg,${selTheme.color}88,#FFD70055,${selTheme.color}33,${selTheme.color}88)`;
+  card.style.boxShadow=`0 0 70px ${selTheme.glow},0 18px 55px #00000066`;
+
+  const topic = selTheme.id==='custom'?(document.getElementById('customInput').value||'personal growth'):selTheme.label;
+  const vision= document.getElementById('vision').value;
+  const person= document.getElementById('person').value;
+  const voice = VOICES[Math.floor(Math.random()*VOICES.length)];
+  const nonce = `${Date.now()}-${Math.random().toString(36).slice(2,7)}`;
+  const langInstr = selLang==='Hindi'?'Hindi — Devanagari script only':selLang==='Bengali'?'Bengali — Bengali script only':'English';
+
+  const prompt=`[REQ_${nonce}] Write ONE powerful motivational quote. Must be completely unique every call.
+TOPIC: ${topic}
+STYLE: ${selStyle}
+LANGUAGE: ${langInstr}
+SPEAK AS: ${voice}
+${person?`FOR: ${person} — address them directly`:''}
+${vision?`TRANSFORM THIS RAW IDEA: "${vision}"`:''}
+OUTPUT: Only the quote. No labels. No quote marks. 1-3 sentences. Zero clichés. Make it unforgettable.`;
+
+  let quoteText='';
+  try{
+    const res = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:'You are the greatest motivational quote writer alive. You NEVER repeat yourself. Every quote is 100% unique. Blend the depth of Rumi, sharpness of Chanakya, stoicism of Marcus Aurelius, clarity of Naval Ravikant.',
+        messages:[{role:'user',content:prompt}],
+      }),
+    });
+    const data=await res.json();
+    quoteText=(data?.content?.[0]?.text||'').trim().replace(/^["'""]|["'""]$/g,'').trim();
+  }catch(e){}
+
+  if(!quoteText) quoteText='The graveyard is the richest place — full of people who waited for the perfect moment.';
+
+  count++;
+  const ct=document.getElementById('countText');
+  ct.style.display='block';
+  ct.textContent=`${count} unique quote${count>1?'s':''} forged`;
+
+  const twitterHref=`https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText+'\n\n— FORGE · Words That Shape Empires')}`;
+  const waHref=`https://wa.me/?text=${encodeURIComponent(quoteText)}`;
+
+  document.getElementById('cardContent').innerHTML=`
+    <div style="position:absolute;top:14px;left:22px;font-size:100px;line-height:1;color:${selTheme.color}12;font-style:italic;font-family:'Cormorant Garamond',serif;user-select:none">"</div>
+    <p class="quote-text" style="animation:rise .8s cubic-bezier(.16,1,.3,1) both">${quoteText}</p>
+    <div class="quote-line" style="background:linear-gradient(90deg,transparent,${selTheme.color},#FFD700,${selTheme.color},transparent)"></div>
+    <div class="quote-meta" style="color:${selTheme.color}">${selTheme.icon} ${selTheme.label} · ${selStyle} · ${selLang}</div>
+    <div class="btns">
+      <button class="action-btn btn" id="copyBtn" onclick="copyQ('${encodeURIComponent(quoteText)}')" style="border:1px solid #2a1808;color:#5a4020">Copy Quote</button>
+      <button class="action-btn btn" onclick="forge()" style="border:1px solid #2a1808;color:#5a4020">↺ New Quote</button>
+    </div>
+    <div class="btns">
+      <a href="${twitterHref}" target="_blank" class="share-btn">𝕏 Twitter</a>
+      <a href="${waHref}" target="_blank" class="share-btn">💬 WhatsApp</a>
+    </div>
+  `;
+
+  // Restore button
+  btn.disabled=false;
+  btn.style.background=`linear-gradient(135deg,${selTheme.color} 0%,#FFD700 45%,${selTheme.color} 100%)`;
+  btn.style.backgroundSize='200% auto';
+  btn.style.color='#080400';
+  btn.style.animation='shimmer 3s linear infinite';
+  btn.style.boxShadow=`0 0 40px ${selTheme.glow},0 8px 30px ${selTheme.color}30`;
+  btn.innerHTML='✦ &nbsp; Forge the Quote &nbsp; ✦';
+}
+
+function copyQ(encoded){
+  const text=decodeURIComponent(encoded);
+  navigator.clipboard.writeText(text).then(()=>{
+    const b=document.getElementById('copyBtn');
+    if(b){b.textContent='✓ Copied!';b.style.color=selTheme.color;b.style.borderColor=selTheme.color;}
+    setTimeout(()=>{if(b){b.textContent='Copy Quote';b.style.color='#5a4020';b.style.borderColor='#2a1808';}},2000);
+  });
+}
+
+// Init forge button style
+function initBtn(){
+  const btn=document.getElementById('forgeBtn');
+  btn.style.background=`linear-gradient(135deg,${selTheme.color} 0%,#FFD700 45%,${selTheme.color} 100%)`;
+  btn.style.backgroundSize='200% auto';
+  btn.style.color='#080400';
+  btn.style.animation='shimmer 3s linear infinite';
+  btn.style.boxShadow=`0 0 40px ${selTheme.glow},0 8px 30px ${selTheme.color}30`;
+}
+
+// Run
+setAC();
+makeStars();
+buildChips();
+updateOrbs();
+initBtn();
+</script>
+</body>
+</html>
