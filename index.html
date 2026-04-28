@@ -1,393 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FORGE — Words That Shape Empires</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet"/>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{min-height:100vh;background:#060408;color:#f5efe0;font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:#2a1a0a;border-radius:4px}
-@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes flow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes twinkle{0%,100%{opacity:.06}50%{opacity:.8}}
-@keyframes floatA{0%,100%{transform:translate(0,0)}40%{transform:translate(28px,-45px)}70%{transform:translate(-12px,18px)}}
-@keyframes floatB{0%,100%{transform:translate(0,0)}50%{transform:translate(-35px,-30px)}}
-.bt{transition:all .3s cubic-bezier(.34,1.56,.64,1);cursor:pointer;font-family:'Cormorant Garamond',serif;border:none}
-.bt:hover{transform:translateY(-2px) scale(1.04)}
-.bt:active{transform:scale(.97)}
-input,textarea{outline:none;font-family:'Cormorant Garamond',serif;transition:border-color .3s,box-shadow .3s}
-textarea{resize:vertical}
-.orb1{position:fixed;width:600px;height:600px;border-radius:50%;top:-180px;left:-180px;pointer-events:none;z-index:0;animation:floatA 20s ease-in-out infinite;transition:background 1s}
-.orb2{position:fixed;width:500px;height:500px;border-radius:50%;bottom:-160px;right:-120px;pointer-events:none;z-index:0;animation:floatB 24s ease-in-out infinite;transition:background 1s}
-.wrap{position:relative;z-index:1;max-width:660px;margin:0 auto;padding:44px 18px 80px}
-.sec-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.4em;color:#5a4020;text-transform:uppercase;margin-bottom:12px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{padding:9px 14px;border-radius:50px;font-size:13px;background:transparent;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
-.chip:hover{transform:translateY(-2px) scale(1.04)}
-.inp{width:100%;background:#0c0a08;border:1px solid #2a1a08;border-radius:10px;color:#f5efe0;font-size:14px;padding:12px 15px;font-family:'Cormorant Garamond',serif;letter-spacing:.03em}
-.share-btn{background:#0d0b09;border:1px solid #1e1208;color:#4a3418;border-radius:7px;padding:8px 16px;font-size:12px;text-decoration:none;font-family:'Cormorant Garamond',serif;letter-spacing:.06em;display:inline-block;transition:all .3s}
-.share-btn:hover{transform:translateY(-2px)}
-.action-btn{background:transparent;border-radius:7px;padding:9px 20px;font-size:11.5px;font-family:'Cinzel',serif;letter-spacing:.12em;transition:all .3s;cursor:pointer;border:1px solid #2a1808;color:#5a4020}
-.action-btn:hover{transform:translateY(-2px);filter:brightness(1.2)}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trendy Topics Hub - Global Trending Content</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-globe-americas"></i>
+                <span>Trendy Topics Hub</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<div class="orb1" id="orb1"></div>
-<div class="orb2" id="orb2"></div>
-<div id="stars"></div>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover What's Trending Worldwide</h1>
+                <p>Get real-time insights on trending topics from around the globe. Make informed decisions based on data-driven analytics.</p>
+                <div class="hero-buttons">
+                    <a href="login.html" class="btn btn-primary">Get Started Free</a>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-chart-line"></i>
+            </div>
+        </div>
+    </section>
 
-<div class="wrap">
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose Trendy Topics Hub?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Coverage</h3>
+                    <p>Access trending topics from over 195 countries in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Advanced algorithms analyze sentiment and provide insights</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Visual Analytics</h3>
+                    <p>Interactive charts and graphs for better decision making</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bell"></i>
+                    <h3>Custom Alerts</h3>
+                    <p>Get notified about topics relevant to your interests</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Insights</h3>
+                    <p>See what topics matter to different demographics</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Export Reports</h3>
+                    <p>Download detailed reports for presentations and analysis</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Header -->
-  <div style="text-align:center;margin-bottom:16px;animation:bob 4.5s ease-in-out infinite">
-    <span id="crown" style="font-size:28px;transition:filter .8s">♕</span>
-  </div>
-  <div style="text-align:center;margin-bottom:10px">
-    <span id="badge" style="font-family:'Cinzel',serif;font-size:9px;letter-spacing:.5em;text-transform:uppercase;animation:pulse 3s ease-in-out infinite;transition:color .6s">✦ &nbsp; FORGE &nbsp; ✦</span>
-  </div>
-  <h1 id="title" style="font-family:'Cinzel',serif;font-weight:900;text-align:center;line-height:1.08;margin-bottom:8px;background-size:300% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;font-size:clamp(1.9rem,6vw,3.4rem)">
-    Words That<br/>Shape Empires
-  </h1>
-  <p style="text-align:center;font-size:1rem;font-style:italic;color:#7a6040;margin-bottom:38px;letter-spacing:.04em">Craft quotes that ignite generations</p>
+    <section class="about" id="about">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Create Account</h3>
+                    <p>Sign up in seconds with your email</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Set Preferences</h3>
+                    <p>Choose topics and regions you care about</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Explore Trends</h3>
+                    <p>Browse real-time trending topics worldwide</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Make Decisions</h3>
+                    <p>Use insights to inform your choices</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div style="display:flex;align-items:center;gap:14px;margin-bottom:38px">
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2a1a0a)"></div>
-    <span style="color:#3a2a10;font-size:15px">✦</span>
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,#2a1a0a,transparent)"></div>
-  </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Trendy Topics Hub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
 
-  <!-- I. THEME -->
-  <div style="margin-bottom:26px">
-    <div class="sec-label">I. Theme</div>
-    <div class="chips" id="themes"></div>
-    <input type="text" class="inp" id="customInput" placeholder="e.g. young India, first-gen entrepreneurs…" style="display:none;margin-top:10px"/>
-  </div>
-
-  <!-- II. MY VISION -->
-  <div style="margin-bottom:26px">
-    <div class="sec-label">II. My Vision &amp; Thoughts</div>
-    <p style="font-size:12.5px;font-style:italic;color:#3a2810;margin-bottom:10px">Your raw idea — AI will forge it into a powerful quote</p>
-    <textarea class="inp" id="vision" rows="3" placeholder="e.g. &quot;Middle class sirf survive karte hain&quot;&#10;or &quot;Comfort is the silent killer of greatness&quot;"></textarea>
-  </div>
-
-  <!-- III. STYLE -->
-  <div style="margin-bottom:26px">
-    <div class="sec-label">III. Style</div>
-    <div class="chips" id="styles"></div>
-  </div>
-
-  <!-- IV. LANGUAGE -->
-  <div style="margin-bottom:26px">
-    <div class="sec-label">IV. Language</div>
-    <div class="chips" id="langs"></div>
-  </div>
-
-  <!-- V. DEDICATED TO -->
-  <div style="margin-bottom:26px">
-    <div class="sec-label">V. Dedicated To (optional)</div>
-    <div style="position:relative">
-      <input type="text" class="inp" id="person" placeholder="e.g. Raj Shamani, young entrepreneurs…" style="padding-left:44px"/>
-      <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);opacity:.3;font-size:17px">✍</span>
-    </div>
-  </div>
-
-  <div style="display:flex;align-items:center;gap:14px;margin:32px 0 30px">
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#1e1008)"></div>
-    <span id="divStar" style="font-size:18px;filter:drop-shadow(0 0 8px #FFD70077);animation:pulse 3s ease-in-out infinite">✦</span>
-    <div style="flex:1;height:1px;background:linear-gradient(90deg,#1e1008,transparent)"></div>
-  </div>
-
-  <!-- FORGE BUTTON -->
-  <div style="text-align:center;margin-bottom:44px">
-    <button id="forgeBtn" class="bt" onclick="forge()" style="border:none;border-radius:50px;padding:17px 58px;font-size:14px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background-size:200% auto;animation:shimmer 3s linear infinite;font-family:'Cinzel',serif">
-      ✦ &nbsp; Forge the Quote &nbsp; ✦
-    </button>
-    <p id="countTxt" style="margin-top:8px;font-size:10px;color:#3a2a10;font-family:'Cinzel',serif;letter-spacing:.12em;display:none"></p>
-    <p style="margin-top:6px;font-size:11px;color:#2a1a08;font-style:italic;font-family:'Cormorant Garamond',serif">Powered by Google Gemini AI · Free & Permanent</p>
-  </div>
-
-  <!-- QUOTE CARD -->
-  <div id="card" style="display:none;border-radius:22px;padding:2px;background-size:300% 300%;animation:flow 4s ease infinite;transition:opacity .6s,transform .6s">
-    <div id="cardInner" style="border-radius:20px;background:linear-gradient(160deg,#0e0c0a,#090706 50%,#0c0a09);padding:50px 36px 44px;position:relative;overflow:hidden">
-      <div id="cardGlow" style="position:absolute;inset:0;pointer-events:none;transition:background 1s"></div>
-      <div id="cardTopLine" style="position:absolute;top:0;left:15%;right:15%;height:1px"></div>
-      <div id="cardContent"></div>
-    </div>
-  </div>
-
-  <div style="text-align:center;margin-top:52px;font-family:'Cinzel',serif;font-size:8px;color:#281808;letter-spacing:.4em;text-transform:uppercase">
-    FORGE · Words That Shape Empires · Built for Raj Shamani
-  </div>
-
-</div>
-
-<script>
-const KEY = "AIzaSyD7nxekfuD7TTMXloEOTq8fJ-MibNdtY5g";
-
-const THEMES = [
-  {id:"hustle",label:"Hustle & Empire",icon:"🔥",color:"#FF6B00",glow:"#FF6B0044"},
-  {id:"peace", label:"Inner Calm",     icon:"🌊",color:"#38BDF8",glow:"#38BDF833"},
-  {id:"courage",label:"Courage & Fire",icon:"⚔️",color:"#FFD700",glow:"#FFD70055"},
-  {id:"youth", label:"Youth & Vision", icon:"🚀",color:"#C084FC",glow:"#C084FC44"},
-  {id:"wisdom",label:"Ancient Wisdom", icon:"🌿",color:"#4ADE80",glow:"#4ADE8033"},
-  {id:"love",  label:"Love & Soul",    icon:"❤️",color:"#FB7185",glow:"#FB718544"},
-  {id:"strong",label:"Unbreakable",    icon:"💎",color:"#93C5FD",glow:"#93C5FD33"},
-  {id:"custom",label:"Your Vision",    icon:"✍️",color:"#FBBF24",glow:"#FBBF2433"},
-];
-const STYLES=["Short & Punchy","Poetic & Deep","Bold & Direct","Philosophical","Story-like"];
-const LANGS=["English","Hindi","Bengali"];
-const VOICES=[
-  "a monk who lost everything and found peace",
-  "a self-made billionaire on their last day alive",
-  "a young rebel who refused to follow the crowd",
-  "someone who failed 10 times and finally won",
-  "the universe whispering to a lost soul",
-  "a warrior standing alone before the final battle",
-  "a street kid who became a legend",
-  "iron being forged into a sword",
-  "the first ray of sunlight after the darkest night",
-  "a river that refused to stop for any mountain",
-  "history looking back at this generation",
-  "someone who chose discomfort and conquered everything",
-  "a parent writing a letter to their unborn child",
-  "a teacher on their last day of class",
-  "someone who just survived the worst year of their life",
-];
-
-let sel={theme:THEMES[0],style:"Bold & Direct",lang:"English"};
-let count=0;
-
-function ac(){return sel.theme.color;}
-function ag(){return sel.theme.glow;}
-
-// Stars
-(function(){
-  const el=document.getElementById('stars');
-  for(let i=0;i<35;i++){
-    const s=document.createElement('div');
-    const sz=.7+Math.random()*1.8;
-    s.style.cssText=`position:fixed;width:${sz}px;height:${sz}px;border-radius:50%;background:#FFD700;left:${Math.random()*100}%;top:${Math.random()*100}%;pointer-events:none;z-index:0;animation:twinkle ${2+Math.random()*4}s ease-in-out ${Math.random()*5}s infinite`;
-    el.appendChild(s);
-  }
-})();
-
-function updateColors(){
-  document.getElementById('orb1').style.background=`radial-gradient(circle,${ac()}14 0%,transparent 68%)`;
-  document.getElementById('orb2').style.background=`radial-gradient(circle,${ac()}0e 0%,transparent 68%)`;
-  document.getElementById('crown').style.filter=`drop-shadow(0 0 14px #FFD700bb) drop-shadow(0 0 28px ${ac()}66)`;
-  document.getElementById('badge').style.color=ac();
-  const t=document.getElementById('title');
-  t.style.background=`linear-gradient(135deg,#f5efe0 0%,#FFD700 32%,${ac()} 58%,#f5efe0 100%)`;
-  t.style.backgroundSize='300% auto';
-  t.style.webkitBackgroundClip='text';
-  t.style.webkitTextFillColor='transparent';
-  const btn=document.getElementById('forgeBtn');
-  btn.style.background=`linear-gradient(135deg,${ac()} 0%,#FFD700 45%,${ac()} 100%)`;
-  btn.style.backgroundSize='200% auto';
-  btn.style.color='#080400';
-  btn.style.boxShadow=`0 0 40px ${ag()},0 8px 30px ${ac()}30`;
-}
-
-function buildUI(){
-  // Themes
-  const tc=document.getElementById('themes');
-  THEMES.forEach(t=>{
-    const b=document.createElement('button');
-    b.className='chip bt';
-    b.textContent=t.icon+' '+t.label;
-    b.id='t_'+t.id;
-    b.onclick=()=>{
-      sel.theme=t;
-      document.getElementById('customInput').style.display=t.id==='custom'?'block':'none';
-      updateThemeChips();
-      updateColors();
-    };
-    tc.appendChild(b);
-  });
-  // Styles
-  const sc=document.getElementById('styles');
-  STYLES.forEach(s=>{
-    const b=document.createElement('button');
-    b.className='chip bt';
-    b.textContent=s;
-    b.id='s_'+s.replace(/\W/g,'');
-    b.onclick=()=>{sel.style=s;updateStyleChips();};
-    sc.appendChild(b);
-  });
-  // Langs
-  const lc=document.getElementById('langs');
-  LANGS.forEach(l=>{
-    const b=document.createElement('button');
-    b.className='chip bt';
-    b.textContent=l;
-    b.style.fontFamily="'Cinzel',serif";
-    b.style.letterSpacing='.1em';
-    b.id='l_'+l;
-    b.onclick=()=>{sel.lang=l;updateLangChips();};
-    lc.appendChild(b);
-  });
-  updateThemeChips();
-  updateStyleChips();
-  updateLangChips();
-  updateColors();
-  // Input focus
-  document.querySelectorAll('.inp').forEach(el=>{
-    el.addEventListener('focus',()=>{el.style.borderColor=ac();el.style.boxShadow=`0 0 16px ${ag()}`;});
-    el.addEventListener('blur',()=>{el.style.borderColor='#2a1a08';el.style.boxShadow='none';});
-  });
-}
-
-function updateThemeChips(){
-  THEMES.forEach(t=>{
-    const b=document.getElementById('t_'+t.id);
-    const on=sel.theme.id===t.id;
-    b.style.border=`1px solid ${on?t.color:'#221608'}`;
-    b.style.background=on?t.color+'20':'transparent';
-    b.style.color=on?t.color:'#4a3818';
-    b.style.boxShadow=on?`0 0 18px ${t.glow}`:'none';
-  });
-}
-function updateStyleChips(){
-  STYLES.forEach(s=>{
-    const b=document.getElementById('s_'+s.replace(/\W/g,''));
-    const on=sel.style===s;
-    b.style.border=`1px solid ${on?ac():'#221608'}`;
-    b.style.background=on?ac()+'18':'transparent';
-    b.style.color=on?ac():'#4a3818';
-    b.style.boxShadow=on?`0 0 12px ${ag()}`:'none';
-  });
-}
-function updateLangChips(){
-  LANGS.forEach(l=>{
-    const b=document.getElementById('l_'+l);
-    const on=sel.lang===l;
-    b.style.border=`1px solid ${on?ac():'#221608'}`;
-    b.style.background=on?ac()+'1a':'transparent';
-    b.style.color=on?ac():'#4a3818';
-    b.style.fontWeight=on?'600':'400';
-    b.style.boxShadow=on?`0 0 16px ${ag()}`:'none';
-  });
-}
-
-async function forge(){
-  const btn=document.getElementById('forgeBtn');
-  btn.disabled=true;
-  btn.style.background='#100e0c';
-  btn.style.color='#3a2a18';
-  btn.style.animation='none';
-  btn.style.boxShadow='none';
-  btn.innerHTML=`<span style="display:flex;align-items:center;gap:10px;justify-content:center"><span style="width:15px;height:15px;border:2px solid #2a1a08;border-top:2px solid ${ac()};border-radius:50%;animation:spin .7s linear infinite;display:inline-block"></span>Forging…</span>`;
-
-  const card=document.getElementById('card');
-  card.style.display='block';
-  card.style.background=`linear-gradient(135deg,${ac()}88,#FFD70055,${ac()}33,${ac()}88)`;
-  card.style.boxShadow=`0 0 70px ${ag()},0 18px 55px #00000066`;
-  document.getElementById('cardGlow').style.background=`radial-gradient(ellipse 60% 40% at 50% 0%,${ac()}14 0%,transparent 70%)`;
-  document.getElementById('cardTopLine').style.background=`linear-gradient(90deg,transparent,${ac()},#FFD700,${ac()},transparent)`;
-  document.getElementById('cardContent').innerHTML=`<div style="text-align:center;padding:28px 0"><div style="width:42px;height:42px;border:2px solid #1a1208;border-top:2px solid ${ac()};border-radius:50%;animation:spin .85s linear infinite;margin:0 auto 16px"></div><p style="font-style:italic;color:#4a3818;font-size:14px">The muse is awakening…</p></div>`;
-
-  const topic=sel.theme.id==='custom'?(document.getElementById('customInput').value||'personal growth'):sel.theme.label;
-  const vision=document.getElementById('vision').value.trim();
-  const person=document.getElementById('person').value.trim();
-  const voice=VOICES[Math.floor(Math.random()*VOICES.length)];
-  const nonce=Date.now()+'-'+Math.random().toString(36).slice(2,8);
-  const langInstr=sel.lang==='Hindi'?'Hindi — write ONLY in Devanagari script':sel.lang==='Bengali'?'Bengali — write ONLY in Bengali script':'English';
-
-  const prompt=`[UNIQUE_ID:${nonce}]
-You are the greatest motivational quote writer in history. EVERY single call must produce a COMPLETELY DIFFERENT quote.
-
-TOPIC: ${topic}
-STYLE: ${sel.style}
-LANGUAGE: ${langInstr}
-SPEAK AS: ${voice}
-${person?'FOR: '+person+' — address them directly and personally':''}
-${vision?'TRANSFORM THIS RAW IDEA INTO THE QUOTE: "'+vision+'"':''}
-
-STRICT RULES:
-- Output ONLY the quote. Nothing else. No labels. No quotation marks. No explanation.
-- ${langInstr}
-- 1 to 3 sentences only. Every word must earn its place.
-- FORBIDDEN: never give up, believe in yourself, dream big, stay positive, hustle hard
-- Make it so powerful someone would tattoo it or post it at midnight
-- Be completely original and unexpected every single time`;
-
-  let quoteText='';
-  try{
-    const res=await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${KEY}`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        contents:[{parts:[{text:prompt}]}],
-        generationConfig:{
-          temperature:2.0,
-          topP:1.0,
-          topK:64,
-          maxOutputTokens:200,
-        },
-      }),
-    });
-    const data=await res.json();
-    quoteText=(data?.candidates?.[0]?.content?.parts?.[0]?.text||'').trim();
-    quoteText=quoteText.replace(/^["'""]|["'""]$/g,'').replace(/^Quote:\s*/i,'').trim();
-  }catch(e){console.log(e);}
-
-  if(!quoteText) quoteText='The graveyard is the richest place on earth — it is full of people who were almost ready.';
-
-  count++;
-  const ct=document.getElementById('countTxt');
-  ct.style.display='block';
-  ct.textContent=count+' unique quote'+(count>1?'s':'')+' forged';
-
-  const tHref=`https://twitter.com/intent/tweet?text=${encodeURIComponent(quoteText+'\n\n— FORGE · Words That Shape Empires')}`;
-  const wHref=`https://wa.me/?text=${encodeURIComponent(quoteText)}`;
-  const qEnc=encodeURIComponent(quoteText);
-
-  document.getElementById('cardContent').innerHTML=`
-    <div style="position:absolute;top:14px;left:22px;font-size:100px;line-height:1;color:${ac()}12;font-style:italic;font-family:'Cormorant Garamond',serif;user-select:none">"</div>
-    <p style="font-size:clamp(1.2rem,3.3vw,1.8rem);font-style:italic;line-height:1.75;color:#f5efe0;text-align:center;position:relative;z-index:1;letter-spacing:.015em;animation:rise .8s cubic-bezier(.16,1,.3,1) both">${quoteText}</p>
-    <div style="height:1px;margin:24px auto;background:linear-gradient(90deg,transparent,${ac()},#FFD700,${ac()},transparent)"></div>
-    <div style="text-align:center;margin-bottom:22px;font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.3em;color:${ac()};text-transform:uppercase;opacity:.65">${sel.theme.icon} ${sel.theme.label} · ${sel.style} · ${sel.lang}</div>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:10px">
-      <button class="action-btn" id="cpyBtn" onclick="copyQ('${qEnc}')">Copy Quote</button>
-      <button class="action-btn" onclick="forge()">↺ New Quote</button>
-    </div>
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
-      <a href="${tHref}" target="_blank" class="share-btn">𝕏 Twitter</a>
-      <a href="${wHref}" target="_blank" class="share-btn">💬 WhatsApp</a>
-    </div>
-  `;
-
-  btn.disabled=false;
-  btn.style.background=`linear-gradient(135deg,${ac()} 0%,#FFD700 45%,${ac()} 100%)`;
-  btn.style.backgroundSize='200% auto';
-  btn.style.color='#080400';
-  btn.style.animation='shimmer 3s linear infinite';
-  btn.style.boxShadow=`0 0 40px ${ag()},0 8px 30px ${ac()}30`;
-  btn.innerHTML='✦ &nbsp; Forge the Quote &nbsp; ✦';
-}
-
-function copyQ(enc){
-  const txt=decodeURIComponent(enc);
-  navigator.clipboard.writeText(txt).then(()=>{
-    const b=document.getElementById('cpyBtn');
-    if(b){
-      b.textContent='✓ Copied!';
-      b.style.color=ac();
-      b.style.borderColor=ac();
-      setTimeout(()=>{b.textContent='Copy Quote';b.style.color='#5a4020';b.style.borderColor='#2a1808';},2000);
-    }
-  });
-}
-
-buildUI();
-</script>
+    <script src="js/auth.js"></script>
 </body>
 </html>
